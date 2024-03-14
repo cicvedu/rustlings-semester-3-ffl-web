@@ -46,7 +46,7 @@ impl State {
         {
             Message::Quit => self.quit(),
             Message::Move{x,y} => self.move_position(Point{x:x as u8,y:y as u8}),
-            Message::Write(s) => self.message=s,
+            Message::Write(s) => self.echo(s),
             Message::ChangeColor(r,g,b) => self.change_color((r as u8, g as u8, b as u8)),
         }
     }
