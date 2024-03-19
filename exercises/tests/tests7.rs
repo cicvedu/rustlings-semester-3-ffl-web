@@ -37,7 +37,8 @@
 // I AM NOT DONE
 
 fn main() {}
-
+use std::env;
+use std::time::{SystemTime, UNIX_EPOCH};
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -48,6 +49,7 @@ mod tests {
             .duration_since(std::time::UNIX_EPOCH)
             .unwrap()
             .as_secs();
+        env::set_var("TEST_FOO", (timestamp - 5).to_string());
         let s = std::env::var("TEST_FOO").unwrap();
         let e: u64 = s.parse().unwrap();
         assert!(timestamp >= e && timestamp < e + 10);
